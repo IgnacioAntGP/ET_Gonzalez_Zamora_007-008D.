@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title id="titulo">CheckIn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-card-content class="fondo_img">
+      <ion-img src="assets/logoDuoc.png" class="card_img"></ion-img>
+      <p>¡Bienvenido docente!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="centrar_boton">
+    <ion-button fill="solid" shape="round" class="boton" routerLink="/login">
+      Login
+    </ion-button>
+  </div>
+  <div class="centrar_boton">
+    <ion-button fill="solid" shape="round" class="boton" routerLink="/registro">
+      Registrarme
+    </ion-button>
+  </div>
+
+  <!--
+  <ion-button fill="solid" shape="round" color="primary" [routerLink]="['/alert']">
+    Alert
+  </ion-button>
+  <ion-button fill="outline" shape="round" color="secondary" routerLink="/card">
+    Card
+  </ion-button>
+-->
+</ion-content>

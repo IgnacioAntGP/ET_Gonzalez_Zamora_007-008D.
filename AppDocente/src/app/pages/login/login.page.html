@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/"
+      text="">
+
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title id="titulo">Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mis credenciales</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none" >
+
+        <ion-item>
+          <ion-input  fill="solid"
+                      label="Email"
+                      type="email"
+                      labelPlacement="floating"
+                      placeholder="Ingrese su correo"
+                      name="email" [(ngModel)]="email"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input fill="solid"
+                        label="Contraseña"
+                        type="password"
+                        labelPlacement="floating"
+                        placeholder="Ingrese su contraseña"
+                        name="password" [(ngModel)]="password"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+      <div class="centrar_boton">
+        <ion-button (click)="login()" class="boton" fill="solid" shape="round">
+          Ingresar
+        </ion-button>
+      </div>
+  </ion-card>
+</ion-content>

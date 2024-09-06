@@ -1,0 +1,17 @@
+
+ion-button{
+    font-weight: bolder;
+    --color:rgb(255, 184, 0);
+    --background: rgb(2, 83, 162);
+    --border-radius: 15px;
+    --border-color: rgb(255, 255, 255);
+    --border-style: solid;
+    --border-width: 2px;
+
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0);
+
+    --ripple-color: deeppink;
+
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+}

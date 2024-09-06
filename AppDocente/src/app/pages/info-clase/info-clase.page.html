@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/"
+      text="">
+
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title id="titulo">Clase [NOMBRE]</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+      <ion-item>
+        <ion-select label="Modulo" placeholder="Seleccione una sección" name="modulo" [(ngModel)]="modulo">
+          <ion-select-option value="012V">012V</ion-select-option>
+          <ion-select-option value="011V">011V</ion-select-option>
+          <ion-select-option value="009D">008D</ion-select-option>
+          <ion-select-option value="007D">007D</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime-button  datetime="datetime"
+        ></ion-datetime-button>
+
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime   id="datetime"
+                            locale="es-ES"
+                            presentation="date"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Sala</ion-label>
+        <ion-select placeholder="Seleccione una sección" name="sala" [(ngModel)]="sala">
+          <ion-select-option value="PC202">PC202 - Lab(30)</ion-select-option>
+          <ion-select-option value="PC207">PC207 - Lab(26)</ion-select-option>
+          <ion-select-option value="PC347">PC347 - Lab(18)</ion-select-option>
+          <ion-select-option value="PC206">PC206 - Lab(22)</ion-select-option>
+        </ion-select>
+      </ion-item>
+  </ion-list>
+
+  <div class="centrar_boton">
+    <ion-button (click)="activarCamara()" fill="solid" shape="round">
+      Escanear QR
+    </ion-button>
+  </div>
+  <div class="centrar_boton">
+    <ion-button (click)="verAsistencia()" fill="solid" shape="round">
+      Ver asistencia
+    </ion-button>
+  </div>
+  <div class="centrar_boton">
+    <!--En page de la clase en específica-->
+    <ion-button fill="solid" shape="round" routerLink="/justificaciones">
+      <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
+      Justificaciones
+    </ion-button>
+  </div>
+</ion-content>

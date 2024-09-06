@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon class="icono-toolbar" slot="end" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title id="titulo">CheckIn - DuocUC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>¡Bienvenido!</ion-card-title>
+      <ion-card-subtitle>Docente: Vivita Sol</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Programación Web</ion-label>
+      <ion-button (click)="redirigir()" class="boton-elegirClase">
+        <ion-icon name="add-circle-outline" size="large" ></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Programación de Aplicaciones Móviles</ion-label>
+      <ion-button (click)="redirigir()" class="boton-elegirClase">
+        <ion-icon name="add-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Desarrollo de Software de escritorio</ion-label>
+      <ion-button (click)="redirigir()" class="boton-elegirClase">
+        <ion-icon name="add-circle-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-img src="assets/vivoDuoc.png" class="card_img"></ion-img>
+  </ion-card>
+
+</ion-content>
