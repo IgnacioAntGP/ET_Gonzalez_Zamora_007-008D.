@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mi Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mi Perfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card-content>
+    <ion-img src="assets/perfil.jpg" class="perfil"></ion-img>
+  </ion-card-content>
+
+  <ion-item>
+    <ion-input label="Nombre:" value="Viviana Poblete" [readonly]="true" name="nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Rut:" value="13.244.555-9" [readonly]="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Correo:" value="vivitasol@duocuc.cl" [readonly]="true"></ion-input>
+  </ion-item>
+
+  <div class="centrar_boton">
+    <ion-button (click)="editarPerfil()">
+      <ion-icon slot="start" name="settings-outline" size="large"></ion-icon>
+      Editar perfil
+    </ion-button>
+  </div>
+
+</ion-content>
+

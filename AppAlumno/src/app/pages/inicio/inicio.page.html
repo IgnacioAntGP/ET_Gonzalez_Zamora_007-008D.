@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login Alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+      <ion-img src="assets/logoDuoc.png" class="imagen"></ion-img>
+  </ion-card>
+
+  <div class="centrar-boton" >
+     <ion-button (click)="hacerLogin()" class="boton" fill="solid" shape="round">
+      Login
+    </ion-button>
+  </div>
+
+  <div class="centrar-boton">
+    <ion-button (click)="hacerRegistro()"  class="boton"fill="solid" shape="round">
+     Registrarme
+   </ion-button>
+ </div>
+  
+</ion-content>

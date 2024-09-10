@@ -1,0 +1,55 @@
+
+/* selector de etiqueta */
+
+ion-img{
+    background: #fff;
+}
+
+ion-card{
+    margin-top: 40%;
+    border-radius: 15px;
+}
+
+ion-card-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Selector ID */
+
+#titulo{
+    color: rgb(255, 184, 0);
+    font-size: 25px;
+    font-weight: bolder;
+    text-shadow: black;
+}
+
+/* Selector class */
+
+.card_img{
+    max-width: 100%;
+    height: auto;
+}
+
+.centrar-boton{
+    text-align: center;
+}
+
+.boton{
+    --background: rgb(1, 44, 86);
+
+    --color: rgb(255, 184, 0);
+
+    --border-radius: 5px;
+    --border-color: #000;
+    --border-style: solid;
+    --border-width: 1px;
+
+    --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+    --ripple-color: deeppink;
+
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+}

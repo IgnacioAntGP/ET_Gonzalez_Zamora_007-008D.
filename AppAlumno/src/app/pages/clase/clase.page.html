@@ -1,0 +1,319 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis Clases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+ 
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mis Clases</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-accordion-group>
+    <ion-accordion value="lunes">
+      <ion-item slot="header" color="light">
+        <ion-label>Lunes</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">13:01-14:20: Calidad de Software</div>
+      <div class="ion-padding" slot="content" > Sala: PC209</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+      
+      <div class="ion-padding" slot="content">14:30-15:50: Ingles Intermedio</div>
+      <div class="ion-padding" slot="content"> Sala: LINF403</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+        Registrarme
+      </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+    </ion-accordion>
+    <ion-accordion value="martes">
+      <ion-item slot="header" color="light">
+        <ion-label>Martes</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">13:01-14:20: Calidad de Software</div>
+      <div class="ion-padding" slot="content" > Sala: PC209</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+        Registrarme
+      </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+      
+      <div class="ion-padding" slot="content">14:30-15:50: Ingles Intermedio</div>
+      <div class="ion-padding" slot="content"> Sala: LINF403</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+        
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+    </ion-accordion>
+    <ion-accordion value="miercoles">
+      <ion-item slot="header" color="light">
+        <ion-label>Miercoles</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">14:30-15.50: Programacion de Aplicaciones Moviles</div>
+      <div class="ion-padding" slot="content" > Sala: PC202</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+
+      <div class="ion-padding" slot="content">16:01-18:10: Estadistica Descriptiva</div>
+      <div class="ion-padding" slot="content"> Sala: PC224</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+    </ion-accordion>
+
+    <ion-accordion value="jueves">
+      <ion-item slot="header" color="light">
+        <ion-label>Jueves</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">13:01-14:20: Calidad de Software</div>
+      <div class="ion-padding" slot="content" > Sala: PC209</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+      
+      
+      <div class="ion-padding" slot="content">14:30-15:50: Ingles Intermedio</div>
+      <div class="ion-padding" slot="content"> Sala: LINF403</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="viernes">
+      <ion-item slot="header" color="light">
+        <ion-label>Viernes</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">13:01-14:20: Calidad de Software</div>
+      <div class="ion-padding" slot="content"> Sala: PC209</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+      <div class="ion-padding" slot="content">
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+      
+      <div class="ion-padding" slot="content">14:30-15:50: Ingles Intermedio</div>
+      <div class="ion-padding" slot="content"> Sala: LINF403</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+      <div class="ion-padding" slot="content">
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+      
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="justificar()"   class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
