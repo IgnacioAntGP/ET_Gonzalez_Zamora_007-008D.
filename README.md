@@ -6,3 +6,4 @@ Ionic: npm i -g @ionic/cli@7
 Bibliotecas:
 Angular QRcode: npm install angularx-qrcode --save
 API Nativa Cámara(para cambiar las fotos, aún no activa cámara, por investigar): npm i @capacitor/camera
+Swiper (carrusel de fotos): npm install swiper
