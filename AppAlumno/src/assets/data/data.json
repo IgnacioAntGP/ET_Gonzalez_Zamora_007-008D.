@@ -1,0 +1,75 @@
+{
+  "usuarios": [
+    {
+      "id": "3b2e",
+      "rut": "207223719",
+      "nombre": "Benjamin Zamora",
+      "username": "benjamin",
+      "password": "benja1234",
+      "email": "benja@gmail.com",
+      "imagen": "",
+      "isactive": true
+    },
+    {
+      "id": "aa19",
+      "rut": "205918639",
+      "nombre": "Ignacio Gonzalez",
+      "username": "ignacio",
+      "password": "ignacio1234",
+      "email": "igna@gmail.com",
+      "isactive": true
+    }
+  ],
+  "asignaturas": [
+    {
+      "id": "1",
+      "nombre": "Programación De Aplicaciones Móviles",
+      "imagen": "",
+      "docente": "Viviana Poblete",
+      "descripcion": "Insertar una descripción..."
+    },
+    {
+      "id": "2",
+      "nombre": "Calidad de Software",
+      "imagen": "",
+      "docente": "Alex Aguilera",
+      "descripcion": "Insertar una descripción..."
+    },
+    {
+      "id": "3",
+      "nombre": "Desarrollo Orientado a Objetos",
+      "imagen": "",
+      "docente": "Mariangeles Robinson",
+      "descripcion": "Insertar una descripción..."
+    }
+  ],
+  "justificaciones": [],
+  "asistencias": [
+    {
+      "id": "e9ac",
+      "rut_alumno": "207223719",
+      "id_asignatura": "1",
+      "fecha": "23/10/2024 1:15:59",
+      "nombre": "Programación De Aplicaciones Móviles",
+      "docente": "Viviana Poblete",
+      "email_alumno": "benja@gmail.com"
+    }
+  ],
+  "imagen_asignaturas": [
+    {
+      "id": "1",
+      "nombre": "Programación De Aplicaciones Móviles",
+      "url": "assets/asignaturas/appMovil.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "Calidad de Software",
+      "url": "assets/asignaturas/calidadSoftware.png"
+    },
+    {
+      "id": "3",
+      "nombre": "Desarrollo Orientado a Objetos",
+      "url": "assets/asignaturas/devObjetos.jpg"
+    }
+  ]
+}
