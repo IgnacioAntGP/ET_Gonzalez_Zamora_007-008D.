@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/mis-asignaturas"
+        text=""
+        color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar mi asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ nuevaAsistencia.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ nuevaAsistencia.docente }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label>
+        <h3> {{ nuevaAsistencia.rut_alumno }} </h3>
+        <h3> {{ nuevaAsistencia.email_alumno }} </h3>
+      </ion-label>
+    </ion-card-content>
+
+    <div class="centrar_boton">
+      <ion-button (click)="mensajeConfirmar()" fill="solid" shape="round">
+        Registrarme
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>
