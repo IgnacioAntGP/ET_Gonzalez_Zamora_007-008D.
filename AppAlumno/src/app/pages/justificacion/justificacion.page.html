@@ -17,12 +17,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-item>
-  <ion-label position="floating">Escriba su justificacion</ion-label>
-    <ion-textarea></ion-textarea>
+  <ion-item>  
+    <ion-textarea name="descripcion" [(ngModel)]="justificacion.descripcion" label="Escriba su justificacion" labelPlacement="floating"></ion-textarea>
   </ion-item>
 
-  <ion-button (click)="justificacion()" expand="block" fill="clear" shape="round">
+  <ion-item>
+    <ion-button (click)="seleccionImagen()" expand="block" fill="clear" shape="round">
+      Ingresar Imagen
+    </ion-button>
+    </ion-item>
+
+    <ion-item *ngIf="imagen">
+      <ion-img [src]="imagen"></ion-img>
+    </ion-item>
+
+
+
+  <ion-button (click)="crearJustificacion()" expand="block" fill="clear" shape="round">
     Enviar Justificacion
   </ion-button>
 </ion-content>

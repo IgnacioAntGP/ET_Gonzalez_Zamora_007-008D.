@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="volver()">
+        Volver
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form action="">
+    <ion-item>
+      <ion-textarea type="text" name="descripcion" label="Editar descripcion"
+        labePlacement="floating" [(ngModel)]="justificacion.descripcion"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="text" name="imagen" label="Suba la imagen"
+        labePlacement="floating"></ion-input>
+    </ion-item>
+
+    <div style="text-align: center;">
+      <ion-button (click)="actualizar()" shape="round" color="warning">
+        Actualizar
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

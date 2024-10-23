@@ -4,14 +4,14 @@
     <ion-header mode="md">  <!--permite cargar material design de android studio en el aspecto visual-->
       <ion-toolbar color="primary" mode="md">
         <ion-icon slot="start" name="person-circle-outline" size="large" style="padding-left: 8px;"></ion-icon>
-        <ion-title>Alumno</ion-title>
+        <ion-title>Menú principal</ion-title>
       </ion-toolbar>
     </ion-header>
 
     <ion-content>
       <ion-list lines="none">
         <ion-menu-toggle *ngFor="let m of opciones">
-          <ion-item [routerLink]="m.redirecTo" detail="true">
+          <ion-item (click)="m.name === 'Cerrar Sesion' ? cerrarSesion() : navegar(m.redirecTo)">
             <ion-icon slot="start" [name]="m.icon" color="dark"></ion-icon>
             <ion-label>{{m.name}}</ion-label>
           </ion-item>
@@ -19,7 +19,6 @@
       </ion-list>
     </ion-content>
   </ion-menu>
-
 
   <!--permite navegar o activar la vista de cada page al momento de utilizar la navegación
    o menú deslizable-->

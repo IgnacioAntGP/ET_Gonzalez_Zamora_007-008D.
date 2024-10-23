@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis Clases</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mis Clases</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card *ngFor = "let a of asignaturas">
+    <div>
+      <ion-card-header>
+        <ion-card-title>{{ a.nombre }}</ion-card-title>
+        <ion-card-subtitle>{{ rut_alumno }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-label>
+          <h3>{{ a.docente }}</h3>
+          <h3>{{ a.descripcion }}</h3>
+          <div *ngFor = "let i of imagenes_asignaturas">
+            <div *ngIf="a.nombre === i.nombre">
+              <img [src]="i.url" alt="{{ i.title }}">
+            </div>
+          </div>
+        </ion-label>
+      </ion-card-content>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="registrarAsistencia(a)" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar(a)"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+      <!-- fin del ngIf-->
+    </div>
+  </ion-card>
+</ion-content>
+
+
+<!--
+  Por testear
+
+          Fecha y hora
+          <div class="ion-padding" slot="content">
+            <ion-datetime-button datetime="datetime"></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime id="datetime"></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </div>
+
+  <ion-accordion-group>
+    <ion-accordion value="lunes">
+      <ion-item slot="header" color="light">
+        <ion-label>Lunes</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">13:01-14:20: Calidad de Software</div>
+      <div class="ion-padding" slot="content" > Sala: PC209</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+
+
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content" id="separacion"></div>
+      
+      <div class="ion-padding" slot="content">14:30-15:50: Ingles Intermedio</div>
+      <div class="ion-padding" slot="content"> Sala: LINF403</div>
+      <div class="ion-padding" slot="content"> Docente: Alex Aguilera</div>
+      
+      <div class="ion-padding" slot="content">
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button (click)="codigo()" class="boton" expand="block" fill="clear" shape="round">
+          Registrarme
+        </ion-button>
+      </div>
+
+      <div class="ion-padding" slot="content">
+        <ion-button  (click)="justificar()"  class="boton" expand="block" fill="clear" shape="round">
+          Justificar
+        </ion-button>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  -->

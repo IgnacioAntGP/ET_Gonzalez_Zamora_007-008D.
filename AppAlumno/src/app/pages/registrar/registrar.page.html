@@ -12,28 +12,85 @@
 
 <ion-content [fullscreen]="true">
 
-  <ion-card-header>
-    <ion-card-title>Registro</ion-card-title>
-  </ion-card-header>
+  <form [formGroup]="registroForm">
+    <ion-item>
+      <ion-input type="text" placeholder="Alumno" formControlName="username" label="Username: " labelPlacement="floating"></ion-input>
+    </ion-item>
 
-  <ion-card-content>
-    <ion-list>
+      <div id="alerta" *ngIf="registroForm.get('username')?.invalid && (registroForm.get('username')?.dirty || registroForm.get('username')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('required')">
+          *Username es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('minlength')">
+          *Username debe tener mínimo 6 caracteres
+        </div>
+      </div>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Alumno" formControlName="rut" label="Rut: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="registroForm.get('rut')?.invalid && (registroForm.get('rut')?.dirty || registroForm.get('rut')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('required')">
+          *Rut es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('minlength')">
+          *Rut debe tener mínimo 8 caracteres
+        </div>
+      </div>
+
       <ion-item>
-        <ion-input label="Correo" labelPlacement="floating" type="email" placeholder="Ingrese su correo" [(ngModel)]="correo" ></ion-input>
+        <ion-input type="text" placeholder="Alumno" formControlName="nombre" label="Nombre: " labelPlacement="floating"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-input label="Contraseña" labelPlacement="floating" type="password" placeholder="Ingrese su contraseña" [(ngModel)]="password" ></ion-input>
-      </ion-item>
+        <div id="alerta" *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || registroForm.get('nombre')?.touched)">
+          <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('required')">
+            *Nombre es obligatorio
+          </div>
+        </div>
 
-      <ion-item>
-        <ion-input label="Contraseña" labelPlacement="floating" type="password1" placeholder="Repita su contraseña" [(ngModel)]="password1" ></ion-input>
-      </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-input type="email" formControlName="email" label="Email: " labelPlacement="floating"></ion-input>
+    </ion-item>
 
-    <ion-button  (click)="registroAlumno()"expand="block" fill="clear" shape="round">
-      Registrarme
+      <div id="alerta" *ngIf="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty || registroForm.get('email')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('email')?.hasError('required')">
+          *Email es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('email')?.hasError('email')">
+          *Escriba un email valido
+        </div>
+      </div>
+
+    <ion-item>
+      <ion-input type="password" formControlName="password" label="Password: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || registroForm.get('password')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('password')?.hasError('required')">
+          *Password es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('password')?.hasError('pattern')">
+          *Password debe tener minimo 8 caracteres una letra y uun numero
+        </div>
+      </div>
+
+    <ion-item>
+    <ion-button (click)="seleccionImagen()" expand="block" fill="clear" shape="round">
+      Ingresar Imagen
     </ion-button>
-  </ion-card-content>
+    </ion-item>
+
+    <ion-item *ngIf="imagen">
+      <ion-img [src]="imagen"></ion-img>
+    </ion-item>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <ion-button (click)="registroAlumno()" [disabled]="!registroForm.valid" shape="round">
+        Crear Usuario
+      </ion-button>
+    </div>
+
+  </form>
 
 </ion-content>

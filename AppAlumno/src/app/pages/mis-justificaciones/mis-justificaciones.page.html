@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/alumno"
+        text=""
+        color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis Justificaciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card *ngFor="let j of justificaciones" (click)="buscarJustificacion(j)">
+    <div *ngIf="j.alumno === usuarioActual">
+      <ion-card-header>
+        <ion-card-title>{{ j.asignatura }}</ion-card-title>
+        <ion-card-subtitle>Docente: {{ j.docente }} </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <h3>fecha:</h3>
+              <h3>Motivo: {{ j.descripcion }}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-
+import { FormBuilder,Validators,FormGroup,FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -10,36 +12,108 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  correo="";
-  password="";
+  userdata:any;
 
-  constructor(private router: Router,private alertController: AlertController) { }
+  usuario={
+    rut:0,
+    username:"",
+    email:"",
+    password:"",
+    isactive:false
+  }
+
+  loginForm:FormGroup;
+
+  constructor(private router: Router,private alertController: AlertController,
+              private authservice: AuthService, private toast: ToastController,
+              private builder: FormBuilder) {
+                this.loginForm = this.builder.group({
+                  'username' : new FormControl("", [Validators.required, Validators.minLength(4)]),
+                  'password' : new FormControl("", [Validators.required, Validators.minLength(8)]),
+                });}
 
   ngOnInit() {
   }
 
-  async ingresoAlumno(){
-    const alert = await this.alertController.create({
-      mode:'ios',
-      header: 'Ingresando...\n' + this.correo,
-      buttons:[
-        {
-          text: 'Continuar',
-          role: 'confirm',
-          handler: () => {
-            console.log(this.correo);
-            console.log(this.password);
+  login(){
+    if(!this.loginForm.valid){
+      return;
+    }
+    const username = this.loginForm.value.username;
+    const password = this.loginForm.value.password;
 
-            console.log('Redireccionando...');
-            this.router.navigate(['/alumno'])
-          }
-        },
-      ],
-    });
+    this.authservice.getByUsername(username).subscribe(resp =>{
+      this.userdata = resp;
+      console.log(this.userdata);
+      if (this.userdata.length === 0) {
+        this.loginForm.reset();
+        this.UsuarioNoExiste();
+        return;
+      }
 
-    console.log('Botón funcionando');
-    await alert.present();
+      this.usuario={
+        rut: this.userdata[0].rut,
+        username: this.userdata[0].username,
+        password: this.userdata[0].password,
+        email: this.userdata[0].email,
+        isactive: this.userdata[0].isactive
+      }
+      if (this.usuario.password !== password){
+        this.loginForm.reset();
+        this.ErrorUsuario();
+        return;
+      }
+      if (!this.usuario.isactive){
+        this.loginForm.reset();
+        this.UsuarioInactivo();
+        return;
+      }
+      this.IniciarSesion(this.usuario);
+    })
+  }
 
+  private IniciarSesion(usuario:any){
+    sessionStorage.setItem('username', usuario.username);
+    sessionStorage.setItem('password', usuario.password);
+    sessionStorage.setItem('rut', usuario.rut)
+    sessionStorage.setItem('ingresado', 'true');
+    this.showToast('sesion Iniciada');
+    this.router.navigate(["/alumno"]);
+  }
+
+  async showToast(msg: any){
+    const toast = await this.toast.create({
+      message:msg,
+      duration: 3000
+    })
+    toast.present();
+  }
+
+  async UsuarioInactivo(){
+    const alerta = await this.alertController.create({
+      header: 'Usuario inactivo',
+      message: 'Contactar a admin@admin.cl',
+      buttons: ['OK']
+    })
+    alerta.present();
+  }
+
+  async ErrorUsuario(){
+    const alerta = await this.alertController.create({
+      header: 'Error..',
+      message: 'Revise sus credenciales',
+      buttons: ['OK']
+    })
+    alerta.present();
+  }
+
+  async UsuarioNoExiste(){
+    const alerta = await this.alertController.create({
+      header: 'No existe',
+      message: 'Debe registrarse',
+      buttons: ['OK']
+    })
+    alerta.present();
   }
 
   recuperarCon(){

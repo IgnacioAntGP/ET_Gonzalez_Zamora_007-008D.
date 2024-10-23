@@ -1,18 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-      defaultHref="/"
-      text=""
-      color="dark">
-
-      </ion-back-button>
+    <ion-buttons slot="end">
+      <ion-button (click)="volver()" expand="block" fill="clear" shape="round" color:dark >
+        Volver
+      </ion-button>
     </ion-buttons>
 
-    <ion-title >Codigo</ion-title>
+    <ion-title >{{ asistencia.nombre }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-img src="assets/QR.png" class="card_img"></ion-img>
+  <div class="qr-container">
+    <qrcode [qrdata]="qrdata" [width]="qrWidth" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+
 </ion-content>

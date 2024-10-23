@@ -5,27 +5,34 @@
         <ion-icon slot="end" name="menu-outline" size="large"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Bienvenido</ion-title>
+    <ion-title>Vivo 5.0</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Alumno</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-card>
     <ion-card-header>
       <ion-card-title>¡Bienvenido!</ion-card-title>
-      <ion-card-subtitle>Alumno: Vivita Sol</ion-card-subtitle>
+      <ion-card-subtitle>Alumno: {{username}}</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
 
-  <ion-card>
-    <ion-img src="assets/vivoDuoc.png" class="card_img"></ion-img>
-  </ion-card>
+  <swiper-container
+  (slidechange)="swiperSlideChanged($event)"
+    [looop]="true"
+    [pagination]="true">
+    <swiper-slide>
+      <img src="assets/vivoDuoc.png" alt="card_img">
+    </swiper-slide>
+    <swiper-slide>
+      <img src="assets/vivoDuoc2.png" alt="card_img">
+    </swiper-slide>
+    <swiper-slide>
+      <img src="assets/vivoDuoc3.png" alt="card_img">
+    </swiper-slide>
+  </swiper-container>
+    
 </ion-content>
 

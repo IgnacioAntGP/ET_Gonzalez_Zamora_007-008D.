@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/alumno"
+        text=""
+        color="dark">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()">
+        <ion-icon slot="end" name="menu-outline" size="large"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis asistencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-accordion-group>
+    <ion-accordion *ngFor="let a of asistencias">
+        <ion-item slot="header" color="light" *ngIf="a.rut_alumno === sesion_rut_alumno">
+          <ion-label>{{ a.nombre }}</ion-label>
+        </ion-item>
+
+        <div class="ion-padding" slot="content">
+          <ion-label>
+            <h3>{{ a.rut_alumno }}</h3>
+            <h3>{{ a.docente }}</h3>
+            <h3>{{ a.fecha }}</h3>
+          </ion-label>
+        </div>
+
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class InicioPage implements OnInit {
 
-  constructor(private menucontroller: MenuController, 
+  constructor(private menucontroller: MenuController,
               private alertcontroller: AlertController,
               private router: Router) { }
 

@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 interface Opciones{
   icon: string;
   name: string;
   redirecTo: string;
-  
 }
 
 @Component({
@@ -15,7 +18,6 @@ interface Opciones{
 export class AppComponent {
 
   opciones : Opciones[]=[
-
     {
       icon:'home-outline',
       name:'Home Page',
@@ -28,17 +30,38 @@ export class AppComponent {
     },
     {
       icon:'book-outline',
-      name:'Mis Clases',
-      redirecTo:'/clase'
+      name:'Mis Asignaturas',
+      redirecTo:'/mis-asignaturas'
+    },
+    {
+      icon:'today-outline',
+      name:'Mis asistencias',
+      redirecTo:'/mis-asistencias'
+    },
+    {
+      icon:'document-text-outline',
+      name:'Mis Justificaciones',
+      redirecTo:'/mis-justificaciones'
     },
     {
       icon:'exit-outline',
       name:'Cerrar Sesion',
       redirecTo:'/inicio'
     },
-
   ]
 
-  constructor() {}
-  
+
+  constructor(private router:Router) {
+    this.router = router;
+  }
+
+  cerrarSesion() {
+    sessionStorage.clear();
+    window.location.reload();
+    this.router.navigate(['/inicio']);
+  }
+
+  navegar(ruta : string){
+    this.router.navigate([ruta])
+  }
 }
