@@ -39,9 +39,8 @@ export class ApiCrudService {
     return this.httpClient.get<Alumnos>(`${environment.apiUrl}/usuarios`)
   }
 
-  getAsistenciaByParams(rut_alumno:any, id_curso:any, asignatura:any, docente:any):Observable<Asistencia>{
-    let params = new HttpParams().set('id_curso', id_curso).set('rut_alumno', rut_alumno).set('asignatura', asignatura).set('docente', docente);
-    return this.httpClient.get<Asistencia>(`${environment.apiUrl}/asistencias/`, { params });
+  getAsistenciaByRut(rutAlumno:any):Observable<Asistencia>{
+    return this.httpClient.get<Asistencia>(`${environment.apiUrl}/asistencias/?rut_alumno=${rutAlumno}`);
   }
 
   //Service camara

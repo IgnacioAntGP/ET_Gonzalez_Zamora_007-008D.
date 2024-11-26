@@ -15,30 +15,14 @@ export class CamaraPage implements OnInit {
   cursoData:any;
   asistencia:any;
 
-  alumnoAsistencia:Asistencia = {
-    id:"",
-    estado: false,
-    fecha: "",
-    asignatura: "",
-    docente: "",
-    email_alumno: "",
-    rut_alumno: "",
-    id_curso: ""
-  }
-
   constructor(private route:ActivatedRoute, private apiCrud:ApiCrudService) {
     this.route.queryParams.subscribe(params => {
-      console.log(params)
-      this.alumno = JSON.parse(params['alumno']);
-      console.log("alumno", this.alumno);
       this.asistencia = JSON.parse(params['asistencia']);
       console.log("asistencia", this.asistencia)
     })
   }
 
   ngOnInit() {
-    this.alumnoAsistencia = this.asistencia;
-    console.log("Asistencia POST",this.alumnoAsistencia);
     Camera.requestPermissions();
   }
 
@@ -52,9 +36,26 @@ export class CamaraPage implements OnInit {
   }
 
   registrarAsistencia(){
-    this.alumnoAsistencia.estado = true;
-    this.apiCrud.putAsistencia(this.alumnoAsistencia).subscribe();
-    this.leerQr()
+    this.asistencia.estado = true;
+      // Verificar si 'id' está presente
+    console.log('ID de asistencia:', this.asistencia.id);
+
+    if (this.asistencia.id) {
+      // Solo si el ID está presente, realiza el PUT
+      this.apiCrud.putAsistencia(this.asistencia).subscribe(
+        response => {
+          console.log('Asistencia actualizada', response);
+        },
+        error => {
+          console.error('Error al actualizar la asistencia', error);
+        }
+      );
+    } else {
+      console.error('El ID de la asistencia es undefined o vacío');
+    }
+
+    /*console.log(this.asistencia);
+    this.apiCrud.putAsistencia(this.asistencia).subscribe();*/
   }
 
   obtenerCurso(){

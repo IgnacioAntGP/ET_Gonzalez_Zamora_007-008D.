@@ -15,11 +15,6 @@ export class ListaCursoPage implements OnInit {
   dataCurso:any;
   dataAsistencia:any;
 
-  paramRutAlumno:any;
-  paramDocente:any;
-  paramIdCurso:any;
-  paramAsignatura:any;
-
   queryParamAsistencia:Asistencia={
     id:"",
     estado:false,
@@ -54,21 +49,15 @@ export class ListaCursoPage implements OnInit {
     })
   }
 
-  obtenerAsistencia(){
-    this.apiCrud.getAsistenciaByParams(this.paramRutAlumno, this.paramIdCurso, this.paramAsignatura, this.paramDocente).subscribe(
-      data =>{
-        this.dataAsistencia = data;
-        this.queryParamAsistencia = this.dataAsistencia;
-      }
-    );
-  }
-
   registrarAsistencia(alumno:any){
-    this.router.navigate(['/camara'],
-      {queryParams:{
-        alumno: JSON.stringify(alumno),
-        asistencia: JSON.stringify(this.queryParamAsistencia)
-      }});
+    this.apiCrud.getAsistenciaByRut(alumno.rut).subscribe(data=>{
+      this.queryParamAsistencia = data;
+      console.log("QUERY PARAMS ASISTENCIA",this.queryParamAsistencia);
+      this.router.navigate(['/camara'],
+        {queryParams:{
+          asistencia: JSON.stringify(this.queryParamAsistencia)
+        }});
+    });
   }
 
 }

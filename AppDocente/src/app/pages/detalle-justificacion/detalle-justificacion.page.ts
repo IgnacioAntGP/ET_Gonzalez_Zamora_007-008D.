@@ -12,17 +12,6 @@ export class DetalleJustificacionPage implements OnInit {
   justificacion:any;
   comentario:any;
 
-  detalleJustificacion={
-    id:"",
-    alumno:"",
-    asignatura:"",
-    docente:"",
-    descripcion:"",
-    imagen:"",
-    fecha:"",
-    comentario:""
-  }
-
   constructor(private route:ActivatedRoute, private router:Router, private apiCrud:ApiCrudService ) {
     this.route.queryParams.subscribe(params => {
       this.justificacion = JSON.parse(params['justificacion']);
