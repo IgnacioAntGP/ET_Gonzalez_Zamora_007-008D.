@@ -1,6 +1,8 @@
 # ProyMovilCheckIn
 # Proyecto semestral en Ionic/Angular - PGY4121 - 007D/008D
 # Descargar Node.js 18.20.4 en adelante
+Enlace a Repositorio de la Data:
+https://github.com/BenjaminZamr/Data
 # Angular:
 npm i -g @angular/cli@16
 # Ionic:
