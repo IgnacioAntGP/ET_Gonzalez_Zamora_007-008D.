@@ -57,8 +57,8 @@ export class AppComponent {
 
   cerrarSesion() {
     sessionStorage.clear();
-    window.location.reload();
     this.router.navigate(['/inicio']);
+    window.location.reload();
   }
 
   navegar(ruta : string){

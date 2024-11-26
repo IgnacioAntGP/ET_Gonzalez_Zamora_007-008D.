@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Justificacion, Justificaciones } from 'src/interfaces/IJustificaciones';
 import { Asignaturas, Asignatura } from 'src/interfaces/IAsignaturas';
 import { Asistencias } from 'src/interfaces/IAsistencia';
+import { QR, QRs } from 'src/interfaces/IQR';
 
 
 @Injectable({
@@ -52,5 +53,14 @@ export class ApicrudService {
   //Bloque service Imagenes
   getImagenes():Observable<any>{
     return this.httpClient.get((`${environment.apiUrl}/imagen_asignaturas`));
+  }
+
+  //Bloque service QR
+  getQR():Observable<QRs>{
+    return this.httpClient.get<QRs>((`${environment.apiUrl}/QR`));
+  }
+
+  postQR(newQR:any):Observable<QR>{
+    return this.httpClient.post<QR>(`${environment.apiUrl}/QR/`, newQR);
   }
 }

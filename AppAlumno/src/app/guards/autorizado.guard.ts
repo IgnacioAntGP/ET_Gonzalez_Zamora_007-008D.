@@ -12,14 +12,14 @@ import { ToastController } from '@ionic/angular';
 
 
 export class AutorizadoGuard {
-  
-  constructor(private authservice: AuthService, 
+
+  constructor(private authservice: AuthService,
               private toast: ToastController,
               private router: Router){
             }
 
   canActivate():
-    
+
     | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (!this.authservice.IsLoggedIn()){
         this.showToast('Debe iniciar sesión..');
@@ -28,8 +28,8 @@ export class AutorizadoGuard {
       }
       else{
         this.authservice.IsLoggedIn();
-        return true;    
-      }  
+        return true;
+      }
     }
 
   async showToast(msg: any){

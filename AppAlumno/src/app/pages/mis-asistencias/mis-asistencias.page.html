@@ -20,7 +20,7 @@
   <ion-accordion-group>
     <ion-accordion *ngFor="let a of asistencias">
         <ion-item slot="header" color="light" *ngIf="a.rut_alumno === sesion_rut_alumno">
-          <ion-label>{{ a.nombre }}</ion-label>
+          <ion-label>{{ a.asignatura }}</ion-label>
         </ion-item>
 
         <div class="ion-padding" slot="content">
@@ -29,6 +29,24 @@
             <h3>{{ a.docente }}</h3>
             <h3>{{ a.fecha }}</h3>
           </ion-label>
+
+          <div class="ion-padding" slot="content">
+            <div class="qr-container">
+              <qrcode [qrdata]="qrdata" [width]="qrWidth" [errorCorrectionLevel]="'M'"></qrcode>
+            </div>
+          </div>
+
+          <div class="ion-padding" slot="content" *ngIf="a.estado == true">
+            <ion-label>
+              <h3>Asistencia tomada</h3>
+            </ion-label>
+          </div>
+
+          <div class="ion-padding" slot="content" *ngIf="a.estado == false">
+            <ion-label>
+              <h3>Asistencia NO tomada</h3>
+            </ion-label>
+          </div>
         </div>
 
     </ion-accordion>

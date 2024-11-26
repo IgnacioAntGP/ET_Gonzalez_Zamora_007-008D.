@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { Asistencias } from 'src/interfaces/IAsistencia';
 import { ApicrudService } from 'src/app/services/api-crud.service';
 import { AuthService } from 'src/app/services/auth.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-mis-asistencias',
@@ -14,34 +12,58 @@ import { Observable } from 'rxjs';
 export class MisAsistenciasPage implements OnInit {
 
   asistencias: Asistencias[] = [];
-  sesion_rut_alumno:number = 0;
+  sesion_rut_alumno:string = "";
   usuarioActual= sessionStorage.getItem('username') || 'Username';
   userData:any;
+  QRs:any
+  qrdata:string ='';
+  qrWidth:number = 0;
 
-  constructor(private router: Router,
-              private apiCrud: ApicrudService,
+  constructor(private apiCrud: ApicrudService,
               private menu: MenuController,
-              private auth: AuthService) { }
+              private auth: AuthService) {
+                this.qrdata='';
+              }
 
   ngOnInit() {
-    this.apiCrud.getAsistencias().subscribe(data =>{
-      this.asistencias = data;
-      console.log(this.asistencias);
-    });
+    this.obtenerAsistencias();
     this.obtenerAlumno();
-    console.log(this.usuarioActual);
+    this.obtenerQRs();
   }
 
   mostrarMenu(){
     this.menu.open('first');
   }
 
+  obtenerAsistencias(){
+    this.apiCrud.getAsistencias().subscribe(data =>{
+      this.asistencias = data;
+      console.log(this.asistencias);
+    });
+  }
+
   obtenerAlumno(){
     this.auth.getByUsername(this.usuarioActual).subscribe(resp =>{
       this.userData = resp;
+      console.log(this.userData);
       this.sesion_rut_alumno = this.userData[0].rut;
-      console.log(this.sesion_rut_alumno);
+
     })
+  }
+
+  obtenerQRs(){
+    this.apiCrud.getQR().subscribe(data =>{
+      this.QRs = data;
+      this.qrdata = this.QRs[0].qrCode;
+      console.log(this.QRs);
+    })
+  }
+
+  setQRWidth() {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    this.qrWidth = Math.min(screenWidth, screenHeight) * 0.9; // 80% del tamaño más pequeño
   }
 
 }

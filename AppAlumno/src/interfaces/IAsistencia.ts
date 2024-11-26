@@ -1,9 +1,10 @@
 //GET, POST, DELETE
 export interface Asistencias{
-    rut_alumno: number,
-    id_asignatura: number,
-    fecha:string,
-    nombre: string,
+    estado: boolean,
+    fecha: string,
+    asignatura: string,
     docente: string,
     email_alumno: string,
+    rut_alumno: string,
+    id_curso: string
 }

@@ -18,14 +18,16 @@ export class RegistroAsistenciaPage implements OnInit {
   userData:any;
   asistencias:any;
   fechaActual:string = "";
+  errorTestFor:boolean=false;
 
   nuevaAsistencia: Asistencias ={
-    rut_alumno: 0,
-    id_asignatura: 0,
-    fecha:"",
-    nombre: "",
+    estado: false,
+    fecha: "",
+    asignatura: "",
     docente: "",
     email_alumno: "",
+    rut_alumno: "",
+    id_curso: ""
   };
 
   constructor(private route: ActivatedRoute,
@@ -35,8 +37,7 @@ export class RegistroAsistenciaPage implements OnInit {
               private auth: AuthService) {
     this.route.queryParams.subscribe(params => {
       this.asignatura = JSON.parse(params['asignatura']);
-      this.nuevaAsistencia.id_asignatura = this.asignatura.id;
-      this.nuevaAsistencia.nombre= this.asignatura.nombre;
+      this.nuevaAsistencia.asignatura= this.asignatura.nombre;
       this.nuevaAsistencia.docente = this.asignatura.docente;
     });
   }
@@ -47,7 +48,7 @@ export class RegistroAsistenciaPage implements OnInit {
     this.obtenerAsistencias();
     console.log('Nueva asistencia:', this.nuevaAsistencia);
     this.obtenerFechaActual();
-    console.log(this.fechaActual);
+    console.log(this.errorTestFor)
   };
 
   obtenerUserData(){
@@ -55,6 +56,7 @@ export class RegistroAsistenciaPage implements OnInit {
       this.userData = resp;
       this.nuevaAsistencia.rut_alumno = this.userData[0].rut;
       this.nuevaAsistencia.email_alumno = this.userData[0].email;
+      this.nuevaAsistencia.id_curso = this.userData[0].idCurso;
     })
   };
 
@@ -70,8 +72,14 @@ export class RegistroAsistenciaPage implements OnInit {
   }
 
   enviarDatos(){
-    this.router.navigate(['/qr'],
+    if(this.errorTestFor == true){
+      console.log("ERROR. Ya ha ingresado una asistencia a esta asignatura");
+    }
+    else{
+      this.registrarAsistencia();
+      this.router.navigate(['/qr'],
       {queryParams:{asistencia: JSON.stringify(this.nuevaAsistencia)}})
+    }
   }
 
   async mensajeConfirmar(){
@@ -84,8 +92,13 @@ export class RegistroAsistenciaPage implements OnInit {
           text: 'Si',
           role: 'confirm',
           handler: () => {
-            this.mensajeExito();
-            this.registrarAsistencia();
+            this.testFor();
+            if(this.errorTestFor == true){
+              this.mensajeErrorFecha();
+            }
+            else{
+              this.mensajeExito();
+            }
           },
         },
         {
@@ -118,6 +131,23 @@ export class RegistroAsistenciaPage implements OnInit {
     await alert.present();
   };
 
+  async mensajeErrorFecha(){
+    const alert = await this.alerta.create({
+      header: 'No fue posible añadir su asistencia',
+      subHeader: 'Ya se ha registrado actualmente para esta clase',
+      mode:'ios',
+      cssClass:'alertHeader',
+      buttons: [{
+          text: 'Continuar',
+          role: 'confirm',
+          handler: () => {
+          },
+        }],
+    });
+
+    await alert.present();
+  };
+
   obtenerFechaActual(){
     const fecha = new Date();
     const dia = fecha.getDate().toString();
@@ -127,6 +157,27 @@ export class RegistroAsistenciaPage implements OnInit {
     const minutos = fecha.getMinutes().toString().padStart(2,'0');
     const segundos = fecha.getSeconds().toString().padStart(2,'0');
     this.nuevaAsistencia.fecha = `${dia}/${mes}/${anno} ${hora}:${minutos}:${segundos}`;
+  }
+
+  /*  AUN SIN NOMBRE SIGNIFICATIVO
+    El método lo que hace es verificar en el arreglo de asistencias si alguna fecha coincide con la de la asistencia actual
+    La variable que utiliza es errorTestFor<boolean> = false => si al fecha es diferente; true => cuando la fecha coincide
+    con una del sistema.
+
+    POR AÑADIR: tiene que haber una variable de "ASIGNATURA", ya que toma la asistencia de cualquiera y la compara
+  */
+  testFor(){
+    for (let index = 0; index < this.asistencias.length; index++) {
+
+      if(
+          this.asistencias[index].fecha.substring(0,2) == this.nuevaAsistencia.fecha.substring(0,2) &&
+          this.asistencias[index].asignatura == this.nuevaAsistencia.asignatura &&
+          this.asistencias[index].rut_alumno == this.nuevaAsistencia.rut_alumno
+        ){
+        this.errorTestFor = true;
+        break;
+      }
+    }
   }
 
 }

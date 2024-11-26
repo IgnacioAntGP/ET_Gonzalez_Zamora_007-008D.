@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AutorizadoGuard } from './guards/autorizado.guard';
+import { DesactivadoGuard } from './guards/desactivado.guard';
 
 const routes: Routes = [
   {
@@ -14,11 +15,13 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
+    canActivate: [DesactivadoGuard]
   },
   {
     path: 'registrar',
-    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule),
+    canActivate: [DesactivadoGuard]
   },
   {
     path: 'alumno',
@@ -47,31 +50,38 @@ const routes: Routes = [
   },
   {
     path: 'recuperar',
-    loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+    loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'mis-justificaciones',
-    loadChildren: () => import('./pages/mis-justificaciones/mis-justificaciones.module').then( m => m.MisJustificacionesPageModule)
+    loadChildren: () => import('./pages/mis-justificaciones/mis-justificaciones.module').then( m => m.MisJustificacionesPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'detalle-justificaciones',
-    loadChildren: () => import('./pages/detalle-justificaciones/detalle-justificaciones.module').then( m => m.DetalleJustificacionesPageModule)
+    loadChildren: () => import('./pages/detalle-justificaciones/detalle-justificaciones.module').then( m => m.DetalleJustificacionesPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'actualizar-justificaciones/:id',
-    loadChildren: () => import('./pages/actualizar-justificaciones/actualizar-justificaciones.module').then( m => m.ActualizarJustificacionesPageModule)
+    loadChildren: () => import('./pages/actualizar-justificaciones/actualizar-justificaciones.module').then( m => m.ActualizarJustificacionesPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'mis-asistencias',
-    loadChildren: () => import('./pages/mis-asistencias/mis-asistencias.module').then( m => m.MisAsistenciasPageModule)
+    loadChildren: () => import('./pages/mis-asistencias/mis-asistencias.module').then( m => m.MisAsistenciasPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'mis-asignaturas',
-    loadChildren: () => import('./pages/mis-asignaturas/mis-asignaturas.module').then( m => m.MisAsignaturasPageModule)
+    loadChildren: () => import('./pages/mis-asignaturas/mis-asignaturas.module').then( m => m.MisAsignaturasPageModule),
+    canActivate: [AutorizadoGuard]
   },
   {
     path: 'registro-asistencia',
-    loadChildren: () => import('./pages/registro-asistencia/registro-asistencia.module').then( m => m.RegistroAsistenciaPageModule)
+    loadChildren: () => import('./pages/registro-asistencia/registro-asistencia.module').then( m => m.RegistroAsistenciaPageModule),
+    canActivate: [AutorizadoGuard]
   },
 ];
 

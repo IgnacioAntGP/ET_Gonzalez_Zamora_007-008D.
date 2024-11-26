@@ -30,4 +30,7 @@ export class AuthService {
   putUsuario(alumno:any):Observable<Users>{
     return this.httpclient.put<Users>(`${environment.apiUrl}/usuarios/${alumno.id}`, alumno);
   }
+  login(userData: any){
+    sessionStorage.setItem('userData', JSON.stringify(userData));
+  }
 }
