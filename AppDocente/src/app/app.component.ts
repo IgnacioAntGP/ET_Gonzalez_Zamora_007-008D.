@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface Opciones{
   icon:string;
@@ -26,12 +27,23 @@ export class AppComponent {
     },
     {
       icon:'paper-plane-outline',
-      name:'Salir',
+      name:'Cerrar Sesion',
       redirecTo:'/inicio',
     },
   ];
 
-  constructor() {}
+  constructor(private router: Router) {
+    this.router = router;
+  }
+
+  cerrarSesion() {
+    sessionStorage.clear();
+    this.router.navigate(['/inicio']);
+  }
+
+  navegar(ruta : string){
+    this.router.navigate([ruta])
+  }
 
   
 }

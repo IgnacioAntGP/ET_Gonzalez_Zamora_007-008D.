@@ -1,0 +1,134 @@
+{
+  "usuarios": [
+    {
+      "id": "3b2e",
+      "rut": "207223719",
+      "nombre": "Benjamin Zamora",
+      "username": "benjamin",
+      "password": "benja1234",
+      "email": "benja@gmail.com",
+      "imagen": "",
+      "isactive": true,
+      "idCurso": "1"
+    },
+    {
+      "id": "aa19",
+      "rut": "205918639",
+      "nombre": "Ignacio Gonzalez",
+      "username": "ignacio",
+      "password": "ignacio1234",
+      "email": "igna@gmail.com",
+      "imagen": "",
+      "isactive": true,
+      "idCurso": "1"
+    }
+  ],
+  "asignaturas": [
+    {
+      "id": "1",
+      "nombre": "Programación De Aplicaciones Móviles",
+      "imagen": "",
+      "docente": "Viviana Poblete",
+      "descripcion": "Insertar una descripción..."
+    },
+    {
+      "id": "2",
+      "nombre": "Calidad de Software",
+      "imagen": "",
+      "docente": "Alex Aguilera",
+      "descripcion": "Insertar una descripción..."
+    },
+    {
+      "id": "3",
+      "nombre": "Desarrollo Orientado a Objetos",
+      "imagen": "",
+      "docente": "Mariangeles Robinson",
+      "descripcion": "Insertar una descripción..."
+    }
+  ],
+  "justificaciones": [
+    {
+      "id": "1",
+      "alumno": "benjamin",
+      "asignatura": "Programación De Aplicaciones Móviles",
+      "docente": "Viviana Poblete",
+      "descripcion": "me enferme",
+      "imagen": "",
+      "fecha": "",
+      "comentario": "Aprobada"
+    }
+  ],
+  "asistencias": [
+    {
+      "id": "e9ac",
+      "estado": true,
+      "fecha": "23/10/2024 1:15:59",
+      "asignatura": "Programación De Aplicaciones Móviles",
+      "docente": "Viviana Poblete",
+      "email_alumno": "benja@gmail.com",
+      "rut_alumno": "207223719",
+      "id_curso": "1"
+    }
+  ],
+  "imagen_asignaturas": [
+    {
+      "id": "1",
+      "nombre": "Programación De Aplicaciones Móviles",
+      "url": "assets/asignaturas/appMovil.jpg"
+    },
+    {
+      "id": "2",
+      "nombre": "Calidad de Software",
+      "url": "assets/asignaturas/calidadSoftware.png"
+    },
+    {
+      "id": "3",
+      "nombre": "Desarrollo Orientado a Objetos",
+      "url": "assets/asignaturas/devObjetos.jpg"
+    }
+  ],
+  "docente": [
+    {
+      "id": "1",
+      "rut_docente": "155215486",
+      "nombre": "Viviana Poblete",
+      "username": "vivita",
+      "password": "viviana1234",
+      "email": "viviana@gmail.com",
+      "isactive": true
+    },
+    {
+      "id": "2",
+      "rut_docente": "142552365",
+      "nombre": "Alex Aguilera1",
+      "username": "alexito",
+      "password": "alex1234",
+      "email": "alex@gmail.com",
+      "isactive": true
+    },
+    {
+      "id": "cb7c",
+      "username": "benjamin",
+      "nombre": "benjita",
+      "email": "benja@gmail.com",
+      "password": "benja1234",
+      "isactive": true
+    }
+  ],
+  "cursos": [
+    {
+      "idCurso": "1",
+      "docente": "Viviana Poblete",
+      "asignatura": "Programación De Aplicaciones Móviles",
+      "codigo": "PAM-1D",
+      "id": "e168"
+    },
+    {
+      "idCurso": "2",
+      "docente": "Viviana Poblete",
+      "asignatura": "Programación De Aplicaciones Móviles",
+      "codigo": "PAM-1V",
+      "id": "68fe"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ApiCrudService } from 'src/app/services/api-crud.service';
 
 @Component({
   selector: 'app-info-clase',
@@ -8,82 +9,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./info-clase.page.scss'],
 })
 export class InfoClasePage implements OnInit {
-  modulo = '';
-  fecha='';
-  sala='';
 
-  constructor(private alertController: AlertController, private router: Router) { }
+  cursos:any;
+  cursoSeleccionado:any;
+
+  constructor(private alertController: AlertController, private router: Router, private apiCrud: ApiCrudService) { }
 
   ngOnInit() {
+    this.obtenerCursos();
   }
 
-  async activarCamara(){
-    const alert = await this.alertController.create({
-      header: 'Activando cámara',
-      subHeader:'Tomando asistencia de:',
-      message:  'Modulo: ' +
-                this.modulo +
-                '\nFecha: ' +
-                this.fecha +
-                '\nSala: ' +
-                this.sala,
-      buttons:[
-        {
-          text:'Rechazar',
-          role:'cancel',
-          handler: () => {
-            console.log('Camara no activada');
-          }
-        },
-        {
-          text:'Aceptar',
-          role:'confirm',
-          handler: () => {
-            console.log(this.modulo);
-            console.log(this.sala);
-            this.router.navigate(['/camara']);
-          }
-        },
-      ]
-    });
-
-    await alert.present();
-
-    await alert.onDidDismiss();
+  obtenerCursos(){
+    this.apiCrud.getCursos().subscribe(data =>{
+      this.cursos = data;
+      console.log(this.cursos)
+    })
   }
 
-  async verAsistencia(){
-    const alert = await this.alertController.create({
-      header: 'Asistencia',
-      message:  'Modulo: ' +
-                this.modulo +
-                '\nFecha: ' +
-                this.fecha +
-                '\nSala: ' +
-                this.sala,
-      buttons:[
-        {
-          text:'Rechazar',
-          role:'cancel',
-          handler: () => {
-            console.log('CANCELADO');
-          }
-        },
-        {
-          text:'Aceptar',
-          role:'confirm',
-          handler: () => {
-            console.log(this.modulo);
-            console.log(this.sala);
-            this.router.navigate(['/asistencia']);
-          }
-        },
-      ]
-    });
-
-    await alert.present();
-
-    await alert.onDidDismiss();
+  verCurso(cursoSeleccionado:any){
+    if(cursoSeleccionado){
+      this.router.navigate(['/lista-curso'],
+        {queryParams:{curso: JSON.stringify(cursoSeleccionado)}});
+    }
+    else{
+      console.log("ERROR. No se ha seleccionado un curso")
+    }
   }
-
 }

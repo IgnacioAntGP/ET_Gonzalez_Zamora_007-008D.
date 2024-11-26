@@ -15,30 +15,38 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Mi Perfil</ion-title>
+      <ion-title size="large">Docente</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card-content>
-    <ion-img src="assets/perfil.jpg" class="perfil"></ion-img>
-  </ion-card-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>¡Datos Docente!</ion-card-title>
+      <ion-card-subtitle>Docente: {{docente.nombre}}</ion-card-subtitle>
+      <ion-card-subtitle>Correo: {{docente.email}}</ion-card-subtitle>
+      <ion-card-subtitle>Rut: {{docente.rut_docente}}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
 
-  <ion-item>
-    <ion-input label="Nombre:" value="Viviana Soledad Poblete Lopez" [readonly]="true" name="nombre" [(ngModel)]="nombre"></ion-input>
-  </ion-item>
+  <form [formGroup]="modificarForm">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="docente.nombre" formControlName="nombre" label="Nombre: " labelPlacement="floating" ></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-input label="Rut:" value="13.244.555-9" [readonly]="true"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-input label="Correo:" value="vivitasol@profesorduoc.cl" [readonly]="true"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-input type="email" [(ngModel)]="docente.email" formControlName="email" label="Email: " labelPlacement="floating"></ion-input>
+    </ion-item>
 
-  <div class="centrar_boton">
-    <ion-button (click)="editarPerfil()">
-      <ion-icon slot="start" name="settings-outline" size="large"></ion-icon>
-      Editar perfil
-    </ion-button>
-  </div>
+     
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="docente.password" formControlName="password" label="Password: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+  </form>
+
+  <ion-button (click)="EditarPerfil()" expand="block" fill="solid" shape="round">
+    Editar perfil
+  </ion-button>
+
 </ion-content>

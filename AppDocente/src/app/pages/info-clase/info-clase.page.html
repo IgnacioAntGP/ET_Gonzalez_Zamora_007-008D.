@@ -15,32 +15,14 @@
 <ion-content [fullscreen]="true">
   <ion-list>
       <ion-item>
-        <ion-select label="Modulo" placeholder="Seleccione una sección" name="modulo" [(ngModel)]="modulo">
-          <ion-select-option value="012V">012V</ion-select-option>
-          <ion-select-option value="011V">011V</ion-select-option>
-          <ion-select-option value="009D">008D</ion-select-option>
-          <ion-select-option value="007D">007D</ion-select-option>
+        <ion-select label="Curso" placeholder="Seleccione una sección" name="curso" [(ngModel)]="cursoSeleccionado">
+          <ion-select-option *ngFor="let c of cursos" [value]="c.idCurso">{{ c.codigo }}</ion-select-option>
         </ion-select>
       </ion-item>
 
       <ion-item>
-        <ion-label>Fecha</ion-label>
-        <ion-datetime-button  datetime="datetime"
-        ></ion-datetime-button>
-
-        <ion-modal [keepContentsMounted]="true">
-          <ng-template>
-            <ion-datetime   id="datetime"
-                            locale="es-ES"
-                            presentation="date"
-            ></ion-datetime>
-          </ng-template>
-        </ion-modal>
-      </ion-item>
-
-      <ion-item>
         <ion-label>Sala</ion-label>
-        <ion-select placeholder="Seleccione una sección" name="sala" [(ngModel)]="sala">
+        <ion-select placeholder="Seleccione una sección" name="sala">
           <ion-select-option value="PC202">PC202 - Lab(30)</ion-select-option>
           <ion-select-option value="PC207">PC207 - Lab(26)</ion-select-option>
           <ion-select-option value="PC347">PC347 - Lab(18)</ion-select-option>
@@ -50,12 +32,7 @@
   </ion-list>
 
   <div class="centrar_boton">
-    <ion-button (click)="activarCamara()" fill="solid" shape="round">
-      Escanear QR
-    </ion-button>
-  </div>
-  <div class="centrar_boton">
-    <ion-button (click)="verAsistencia()" fill="solid" shape="round">
+    <ion-button (click)="verCurso(cursoSeleccionado)" fill="solid" shape="round">
       Ver asistencia
     </ion-button>
   </div>

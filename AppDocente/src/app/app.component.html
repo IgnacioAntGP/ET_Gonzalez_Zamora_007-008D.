@@ -9,10 +9,9 @@
     </ion-header>
 
     <ion-content>
-      <ion-list >
+      <ion-list lines="none" >
         <ion-menu-toggle *ngFor="let o of opciones" >
-          <ion-item   [routerLink]="o.redirecTo"
-                      detail="true">
+          <ion-item (click)="o.name === 'Cerrar Sesion' ? cerrarSesion() : navegar(o.redirecTo)">
             <ion-icon slot="start" [name]="o.icon"></ion-icon>
             <ion-label>{{ o.name }}</ion-label>
           </ion-item>

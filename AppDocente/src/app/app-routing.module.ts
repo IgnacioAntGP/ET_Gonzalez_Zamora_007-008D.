@@ -36,14 +36,17 @@ const routes: Routes = [
     path: 'camara',
     loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule)
   },
-
-  {
-    path: 'asistencia',
-    loadChildren: () => import('./pages/asistencia/asistencia.module').then( m => m.AsistenciaPageModule)
-  },
   {
     path: 'menu-principal',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },
+  {
+    path: 'detalle-justificacion',
+    loadChildren: () => import('./pages/detalle-justificacion/detalle-justificacion.module').then( m => m.DetalleJustificacionPageModule)
+  },
+  {
+    path: 'lista-curso',
+    loadChildren: () => import('./pages/lista-curso/lista-curso.module').then( m => m.ListaCursoPageModule)
   },
 ];
 

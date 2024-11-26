@@ -13,48 +13,77 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Mis credenciales</ion-card-title>
-    </ion-card-header>
 
-    <ion-card-content>
-      <ion-list lines="none">
+  <form [formGroup]="registroForm">
+    <ion-item>
+      <ion-input type="text" placeholder="Docente" formControlName="username" label="Username: " labelPlacement="floating"></ion-input>
+    </ion-item>
 
-        <ion-item>
-          <ion-input  fill="solid"
-                      label="Email" 
-                      type="email" 
-                      placeholder="Ingrese su correo"
-                      name="email" [(ngModel)]="email"
-          ></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input fill="solid"
-                        label="Contraseña" 
-                        type="password"
-                        labelPlacement="floating"
-                        placeholder="Ingrese su contraseña"
-                        name="password1" [(ngModel)]="password1"
-          ></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-input fill="solid"
-                        label="Repetir Contraseña" 
-                        type="password"
-                        labelPlacement="floating"
-                        placeholder="Ingrese su contraseña"
-                        name="password2" [(ngModel)]="password2"
-          ></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-      <div class="centrar_boton">
-        <ion-button (click)="register()" class="boton" fill="solid" shape="round">
-          Ingresar
-        </ion-button>
+      <div id="alerta" *ngIf="registroForm.get('username')?.invalid && (registroForm.get('username')?.dirty || registroForm.get('username')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('required')">
+          *Username es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('minlength')">
+          *Username debe tener mínimo 6 caracteres
+        </div>
       </div>
-  </ion-card>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Docente" formControlName="rut" label="Rut: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="registroForm.get('rut')?.invalid && (registroForm.get('rut')?.dirty || registroForm.get('rut')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('rut')?.hasError('required')">
+          *Rut es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('username')?.hasError('minlength')">
+          *Rut debe tener mínimo 8 caracteres
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Docente" formControlName="nombre" label="Nombre: " labelPlacement="floating"></ion-input>
+      </ion-item>
+
+        <div id="alerta" *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || registroForm.get('nombre')?.touched)">
+          <div id="alerta" *ngIf="registroForm.get('nombre')?.hasError('required')">
+            *Nombre es obligatorio
+          </div>
+        </div>
+
+    <ion-item>
+      <ion-input type="email" formControlName="email" label="Email: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="registroForm.get('email')?.invalid && (registroForm.get('email')?.dirty || registroForm.get('email')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('email')?.hasError('required')">
+          *Email es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('email')?.hasError('email')">
+          *Escriba un email valido
+        </div>
+      </div>
+
+    <ion-item>
+      <ion-input type="password" formControlName="password" label="Password: " labelPlacement="floating"></ion-input>
+    </ion-item>
+
+      <div id="alerta" *ngIf="registroForm.get('password')?.invalid && (registroForm.get('password')?.dirty || registroForm.get('password')?.touched)">
+        <div id="alerta" *ngIf="registroForm.get('password')?.hasError('required')">
+          *Password es obligatorio
+        </div>
+        <div id="alerta" *ngIf="registroForm.get('password')?.hasError('pattern')">
+          *Password debe tener minimo 8 caracteres una letra y uun numero
+        </div>
+      </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <ion-button (click)="registroDocente()" [disabled]="!registroForm.valid" shape="round">
+        Crear Usuario
+      </ion-button>
+    </div>
+  </form>
+
+  
+
 </ion-content>

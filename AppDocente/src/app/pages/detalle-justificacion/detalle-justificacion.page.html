@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/"
+      text="">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Justificacion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Asignatura: {{ justificacion?.asignatura }}</ion-card-title>
+      <ion-card-subtitle>Docente: {{ justificacion?.docente }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Motivo: {{ justificacion?.descripcion }}</ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="justificacion?.imagen">
+        <ion-img [src]="justificacion?.imagen" alt="imagen_justificacion"></ion-img>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea name="comentario" [(ngModel)]="justificacion.comentario" label="Comentario" labelPlacement="floating"></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+
+    <div class="centrar_boton">
+      <ion-button (click)="enviarComentario()" fill="solid" shape="round">
+        Comentar
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>
