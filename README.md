@@ -3,6 +3,8 @@
 # Descargar Node.js 18.20.4 en adelante
 Enlace a Repositorio de la Data:
 https://github.com/BenjaminZamr/Data
+Enlace al DEPLOY:
+https://data-y3qy.onrender.com
 # Angular:
 npm i -g @angular/cli@16
 # Ionic:
